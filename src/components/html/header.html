@@ -1,0 +1,50 @@
+<header id='home'>
+  <div className='uk-margin uk-position-relative uk-dark'>
+    <!-- SLIDESHOW -->
+    <div className='uk-margin js-slideshow-animation' data-uk-slideshow='ratio: false'>
+      <div className='uk-position-relative uk-visible-toggle uk-dark'>
+        <ul className='uk-slideshow-items' uk-height-viewport='min-height: 300'>
+          <li> <img src='images/slide_01.jpg' alt='' data-height data-width data-uk-cover data-uk-img='target: !.uk-slideshow-items > :last-child, !* +*'></li>
+          <li> <img src='images/dark.jpg' alt='' data-height data-width data-uk-cover data-uk-img='target: !* -*, !* +*'> </li>
+          <li> <img src='images/light.jpg' alt='' data-height data-width data-uk-cover data-uk-img='target: !* -*, !.uk-slideshow-items > :first-child'></li>
+        </ul>
+        <a className='uk-position-center-left uk-position-small uk-hidden-hover' href='#' data-uk-slidenav-previous data-uk-slideshow-item='previous'></a>
+        <a className='uk-position-center-right uk-position-small uk-hidden-hover' href='#' data-uk-slidenav-next data-uk-slideshow-item='next'></a>
+      </div>
+    </div>
+    <!-- END SLIDESHOW -->
+
+    <!-- NAVBAR -->
+    <div className='uk-position-top'>
+      <div uk-sticky='animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-light; top: 200'>
+        <nav className='uk-navbar-container uk-navbar-transparent uk-navbar uk-container uk-container-expand' data-uk-navbar='mode:click'>
+          <div className='uk-navbar-left uk-visible@m'>
+            <ul className='uk-navbar-nav' data-uk-scrollspy-nav='closest: li; scroll: true; offset: 60' data-uk-scroll='duration:1500'>
+              <li><a href='#home'>Início</a></li>
+              <li><a href='#empresa'>A Empresa</a></li>
+              <li><a href='#conexoes'>Conexões</a></li>
+              <li><a href='#qualidade'>Qualidade</a></li>
+              <li><a href='#contato'>Contato</a></li>
+            </ul>
+          </div>
+          <!-- LOGO  -->
+          <div className='uk-navbar-right'>
+            <div className='uk-navbar-item'>
+              <!-- <div> <a href='#'>Logo</a> </div> -->
+              <a href='#'><img className='uk-width-small' src='images/hidrocon_branco.svg' alt='Hidrocon Distribuidora'> </a>
+            </div>
+          </div>
+          <!-- END LOGO  -->
+          <!-- TOGGLE MENU MOBILE -->
+          <div className='uk-navbar-right uk-hidden@m'>
+            <div className='uk-navbar-item'>
+              <div><a href='#' className='uk-text-meta'>Menu</a></div>
+            </div>
+            <a className='uk-navbar-toggle uk-navbar-toggle-icon uk-icon' data-data-uk-toggle data-data-uk-navbar-toggle-icon='' href='#offcanvas-slide'> </a>
+          </div>
+          <!-- END TOGGLE MENU MOBILE -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

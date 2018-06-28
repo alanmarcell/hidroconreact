@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/* Global */
+body{
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  min-height: calc(100vh - 52px);
+  flex-direction: column;
+}
+
+img[data-src][src*='data:image'] { 
+  background: rgba(255,0,0,0.8); 
+  /* background-image: url('images/a.jpg'); */
+}
+
+a:link { 
+  text-decoration:none; 
+  color: white;
+  }
+
+.uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle{
+  font-size: 1rem;
+  color: whitesmoke;
+}
+
+.uk-navbar-nav > li.uk-active > a {
+ color: #ffb74d ;
+}
+
+/* Titulos */
+.titulo-barra{
+  font-size: 2.7em;
+  font-weight: bolder;
+  color: whitesmoke;
+}
+
+.under{
+  z-index: 1;
+}
+
+.small{
+  line-height: 60px;
+  background-color: #222;
+}
+
+.text{
+  line-height: 1.6;
+}
+
+/* Empresa */
+.slide-titulo{
+  color: #2a2a2a;
+  font-size: 3em;
+}
+
+.slide-sub-titulo{
+  color: #2a2a2a;
+  font-size: 1.2em;
+}
+
+/* Qualidade */
+.revistaPdf {
+  font-size: 1.4em;
+  font-weight: 800;
+}
+
+/* Modal PDF */
+.modalPDF{
+  height: 80vh;
+margin-top: 25px
+}
+
+.pdfobject-container { 
+  height: 100vh;
+}
+
+.pdfobject { 
+  border: 1px solid #666;
+}
+
+/* Cards */
+.titulo_card {
+  font-size: 1.3em;
+}
+
+.uk-card{
+  border: 1px solid #c4c4c4;
+  border-radius: 3px;
+}
+
+/* Lightbox */
+.uk-lightbox-toolbar {
+  background: transparent;
+}
+
+.uk-lightbox-caption{
+  font-size: 2.3em;
+  color: #c4c4c4;
+}
+
+.uk-transition-slide-bottom {
+  transform: translateY(0);
+}
+
+/* Footer */
+.fix-footer {
+  position:  sticky;
+  bottom:0;
+  left:0;
+  width:100%;
+  color:#fff;
+  z-index:-1;
+}
+
+
+#wrapper {
+  flex: 1;
+  color: whitesmoke;  
+  background-color: #2a2a2a;
+  /* IE9, iOS 3.2+ */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjAlIiByPSIxNDEuNDIxMzU2MjM3MzA5NSUiPjxzdG9wIHN0b3AtY29sb3I9IiMyMTIxMjEiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzMyMzIzMiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L3JhZGlhbEdyYWRpZW50PjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCN2c2dnKSIgLz48L3N2Zz4=);
+  /* Android 2.3- hack (needed for the actual radial gradient) */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjAlIiByPSIxNDEuNDIxMzU2MjM3MzA5NSUiPjxzdG9wIHN0b3AtY29sb3I9IiMyMTIxMjEiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzMyMzIzMiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L3JhZGlhbEdyYWRpZW50PjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCN2c2dnKSIgLz48L3N2Zz4=),
+      -webkit-gradient(radial, left top, 0, left top, 723,color-stop(0, rgb(33, 33, 33)),color-stop(1, rgb(50, 50, 50)));
+  /* Android 2.3 */
+  background-image: -webkit-repeating-radial-gradient(left top, ellipse farthest-corner,rgb(33, 33, 33) 0%,rgb(50, 50, 50) 100%);
+  /* IE10+ */
+  background-image: repeating-radial-gradient(ellipse farthest-corner at left top,rgb(33, 33, 33) 0%,rgb(50, 50, 50) 100%);
+  background-image: -ms-repeating-radial-gradient(left top, ellipse farthest-corner,rgb(33, 33, 33) 0%,rgb(50, 50, 50) 100%);
+}
+/* IE8- CSS hack */
+@media \0screen\,screen\9 {
+  .gradient {
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff212121",endColorstr="#ff323232",GradientType=0);
+  }
+}
+
+/* Contato */
+#map {
+  min-height: 400px;
+  width: 100%;
+ }
+
+ #honeypot {
+  display: none;
+}
+textarea {
+  resize: none;
+}
+
+.font-footer{
+  color: white;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent){
+  background-color: #2a2a2a;
+  /* IE9, iOS 3.2+ */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjAlIiByPSIxNDEuNDIxMzU2MjM3MzA5NSUiPjxzdG9wIHN0b3AtY29sb3I9IiMyMTIxMjEiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzMyMzIzMiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L3JhZGlhbEdyYWRpZW50PjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCN2c2dnKSIgLz48L3N2Zz4=);
+  /* Android 2.3- hack (needed for the actual radial gradient) */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjAlIiByPSIxNDEuNDIxMzU2MjM3MzA5NSUiPjxzdG9wIHN0b3AtY29sb3I9IiMyMTIxMjEiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzMyMzIzMiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjEiLz48L3JhZGlhbEdyYWRpZW50PjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCN2c2dnKSIgLz48L3N2Zz4=),
+      -webkit-gradient(radial, left top, 0, left top, 723,color-stop(0, rgb(33, 33, 33)),color-stop(1, rgb(50, 50, 50)));
+  /* Android 2.3 */
+  background-image: -webkit-repeating-radial-gradient(left top, ellipse farthest-corner,rgb(33, 33, 33) 0%,rgb(50, 50, 50) 100%);
+  /* IE10+ */
+  background-image: repeating-radial-gradient(ellipse farthest-corner at left top,rgb(33, 33, 33) 0%,rgb(50, 50, 50) 100%);
+  background-image: -ms-repeating-radial-gradient(left top, ellipse farthest-corner,rgb(33, 33, 33) 0%,rgb(50, 50, 50) 100%);
+}
+
+/* IE8- CSS hack */
+@media \0screen\,screen\9 {
+  .gradient {
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff212121",endColorstr="#ff323232",GradientType=0);
+  }
+}
