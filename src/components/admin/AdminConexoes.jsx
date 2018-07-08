@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Base, { storage } from './../../FirebaseInit'
 
+const getDownloadURL = arquivo => storage.ref(arquivo.name).put(arquivo).then(imagem => imagem.ref.getDownloadURL())
+
 class AdminConexoes extends Component {
   constructor(props) {
     super(props)
@@ -21,7 +23,7 @@ class AdminConexoes extends Component {
     })
   }
 
-  handleSave(e) {
+  async handleSave(e) {
     const itemConexao = {
       nome: this.nome.value,
       descricao: this.descricao.value,
@@ -32,35 +34,36 @@ class AdminConexoes extends Component {
 
     this.setState({ isUploading: true })
     const arquivo = itemConexao.imagem
+    const arquivoTabela = itemConexao.imagemTabela
     const { name } = arquivo
+    const nameTabela = arquivoTabela.name
 
-    const ref = storage.ref(name)
-    ref.put(arquivo)
-      .then(imagem => {
-        imagem.ref.getDownloadURL()
-          .then(downloadURL => {
-            const novaConexao = {
-              nome: itemConexao.nome,
-              descricao: itemConexao.descricao,
-              codigo: itemConexao.codigo,
-              imagem: downloadURL
-            }
-            Base.push('conexoes', {
-              data: novaConexao,
-              //  { nome, descricao, codigo, imagem },
-              then: error => {
-                if (!error) {
-                  this.nome.value = ''
-                  this.descricao.value = ''
-                  this.codigo.value = ''
-                  this.imagem.value = ''
-                  this.imagemTabela.value = ''
-                }
-              }
-            })
-            this.setState({ isUploading: false })
-          })
-      })
+    const downloadURL = await getDownloadURL(arquivo)
+    const downloadURLTable = await getDownloadURL(arquivoTabela)
+
+    const novaConexao = {
+      nome: itemConexao.nome,
+      descricao: itemConexao.descricao,
+      codigo: itemConexao.codigo,
+      imagem: downloadURL,
+      imagemTabela: downloadURLTable
+    }
+    Base.push('conexoes', {
+      data: novaConexao,
+      //  { nome, descricao, codigo, imagem },
+      then: error => {
+        if (!error) {
+          this.nome.value = ''
+          this.descricao.value = ''
+          this.codigo.value = ''
+          this.imagem.value = ''
+          this.imagemTabela.value = ''
+        }
+      }
+    })
+    this.setState({ isUploading: false })
+    // })
+    // })
     e.preventDefault()
   }
 

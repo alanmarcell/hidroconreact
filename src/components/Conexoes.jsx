@@ -23,7 +23,7 @@ class Conexoes extends Component {
 
   renderConexoes(conexao) {
     return (
-      <div >
+      <div key={conexao.nome + ' - ' + conexao.codigo}>
         <div className='uk-card uk-card-small uk-card-default uk-card-hover'>
           <div className='uk-card-media-top uk-text-center uk-margin-medium-top'>
             <a className='uk-inline' href={conexao.imagemTabela} data-caption={conexao.nome + ' - ' + conexao.codigo}>
