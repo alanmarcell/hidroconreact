@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Base, { storage } from './../../FirebaseInit'
 
 class AdminConexoes extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      conexoes: {
-
-      }
+      conexoes: {}
     }
-
-
+    this.renderConexoes = this.renderConexoes.bind(this)
+    this.deletarConexao = this.deletarConexao.bind(this)
     this.handleSave = this.handleSave.bind(this)
   }
 
@@ -23,10 +21,7 @@ class AdminConexoes extends Component {
     })
   }
 
-
-
   handleSave(e) {
-
     const itemConexao = {
       nome: this.nome.value,
       descricao: this.descricao.value,
@@ -69,14 +64,27 @@ class AdminConexoes extends Component {
     e.preventDefault()
   }
 
+  renderConexoes(key, conexoes) {
+    return (
+      <li key={key}>
+        <button onClick={() => this.deletarConexao(key)}>  Remover  </button>
+        <Link to={`/admin/conexoes/${key}`}>  Editar  </Link>
+        &nbsp; {conexoes.nome}
+      </li>
+    )
+  }
 
+  deletarConexao(key) {
+    Base.remove('conexoes/' + key, error => {
+      console.error(error)
+    })
+  }
 
   render() {
     if (this.state.isUploading) {
       return (
         <div className='container'>
-          <div data-uk-spinner></div>
-          <p> Aguarde...</p>
+          Aguarde... <span data-uk-spinner='ratio: 1.5'></span>
         </div>
       )
     }
@@ -89,6 +97,16 @@ class AdminConexoes extends Component {
         <input className='uk-button uk-button-default' type='file' id='imagem' ref={ref => this.imagem = ref} /> Imagem  <br />
         <input className='uk-button uk-button-default' type='file' id='imagemTabela' ref={ref => this.imagemTabela = ref} /> Imagem Tabela  <br />
         <button className='uk-button uk-button-default' type='button' onClick={this.handleSave}>Salvar conexão</button> <br />
+
+        <div>
+          <ul>
+            {
+              Object
+                .keys(this.state.conexoes)
+                .map(key => this.renderConexoes(key, this.state.conexoes[key]))
+            }
+          </ul>
+        </div>
       </div>
     )
   }

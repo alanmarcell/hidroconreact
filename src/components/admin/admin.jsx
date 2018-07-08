@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Redirect, Route, Link } from 'react-router-dom'
+import { Redirect, Route, Link, Switch } from 'react-router-dom'
 import { auth } from './../../FirebaseInit'
 
 
 import AdminConexoes from './AdminConexoes'
-import AdminEditarConexao from './AdminEditarConexao'
 import AdminMensagemHome from './AdminMensagemHome'
+import AdminEditarConexao from './AdminEditarConexao'
 
 const AdminHome = props => <p> Painel Administrativo </p>
 
@@ -15,8 +15,14 @@ class Admin extends Component {
     this.state = {
       isAuthing: true,
       isLoggedIn: false,
-      user: null
+      user: null,
+      conexoes: {
+
+      },
+      isLoading: true,
+      saved: false
     }
+
   }
 
   componentDidMount() {
@@ -30,6 +36,9 @@ class Admin extends Component {
       })
     })
   }
+
+
+
   render() {
     if (this.state.isAuthing) {
       return <p> Aguarde... </p>
@@ -46,21 +55,31 @@ class Admin extends Component {
             <div className='uk-panel'>
               <ul className='uk-list'>
                 <li> <Link className='uk-link-text' to={`${this.props.match.url}/conexoes`}><span data-uk-icon='icon: plus'></span> Adicionar conexoes</Link></li>
-                <li><Link className='uk-link-text' to={`${this.props.match.url}/editar`}><span data-uk-icon='icon: pencil'></span> Editar conexoes</Link></li>
-                <li><Link className='uk-link-text' to={`${this.props.match.url}/mensagem`}><span data-uk-icon='icon: pencil'></span> Mensagem Início</Link></li>
+                {/* <li><Link className='uk-link-text' to={`${this.props.match.url}/editar/:id`}><span data-uk-icon='icon: pencil'></span> Editar conexoes</Link></li> */}
+                <li><Link className='uk-link-text' to={`${this.props.match.url}/mensagem`}><span data-uk-icon='icon: plus'></span> Mensagem Início</Link></li>
               </ul>
             </div>
           </div>
-          <h1><Route exact path='/' component={AdminHome} /></h1>
           <div className='uk-width-expand'>
             <div className='uk-panel'>
-              <Route path={`${this.props.match.url}/conexoes`} component={AdminConexoes} />
-              <Route path={`${this.props.match.url}/editar`} component={AdminEditarConexao} />
-              <Route path={`${this.props.match.url}/mensagem`} component={AdminMensagemHome} />
+              <Switch>
+                <Route exact path='/' component={AdminHome} />
+                <Route path={`${this.props.match.url}/conexoes/:id`} component={AdminEditarConexao} />
+                <Route path={`${this.props.match.url}/conexoes`} component={AdminConexoes} />
+                <Route path={`${this.props.match.url}/mensagem`} component={AdminMensagemHome} />
+              </Switch>
             </div>
           </div>
-
         </div>
+
+        <ul>
+          {
+            Object
+              .keys(this.state.conexoes)
+              .map(key => this.renderConexoes(key, this.state.conexoes[key]))
+          }
+        </ul>
+
       </div>
     )
   }
